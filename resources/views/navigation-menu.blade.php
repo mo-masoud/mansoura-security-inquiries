@@ -15,6 +15,10 @@
                     <x-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                         الرئيسية
                     </x-nav-link>
+
+                    <x-nav-link href="{{ route('officers.index') }}" :active="request()->routeIs('officers.index')">
+                        الظباط
+                    </x-nav-link>
                 </div>
             </div>
 

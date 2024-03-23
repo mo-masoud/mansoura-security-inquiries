@@ -45,6 +45,10 @@
     "Verify Your Email Address": "تحقق من عنوان البريد الإلكتروني الخاص بك",
     "You are receiving this email because we received a password reset request for your account.": "لقد استلمت هذا البريد الإلكتروني لأننا استقبلنا طلباً لاستعادة كلمة مرور حسابك.",
     "Whoops!": "عذراً!",
+    "Showing": "عرض",
+    "to": "إلى",
+    "of": "من",
+    "results": "نتائج",
     "Whoops! Something went wrong.": "عفوًا، حدث خطأ ما.",
     "Whoops, something went wrong on our servers.": "عفوًا، حدث خطأ ما على خوادمنا.",
     "The provided password does not match your current password.": "كلمة المرور المقدمة لا تتطابق مع كلمة المرور الحالية الخاصة بك."
