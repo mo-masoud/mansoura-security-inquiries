@@ -1,7 +1,7 @@
  @props(['officers' => 0])
 
- <div class="flex items-center justify-between border border-violet-500 rounded-lg p-4">
-     <div class="flex items-center gap-x-2">
+ <div class="border-2 border-violet-500 rounded-lg">
+     <div class="flex items-center gap-x-2 bg-violet-50 rounded-t-lg p-4">
          <span class="flex items-center justify-center rounded-xl bg-violet-500 text-white p-2">
              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                  stroke="currentColor" class="w-6 h-6">
@@ -13,14 +13,14 @@
          <span>{{ $officers }}</span>
      </div>
 
-     <div class="flex items-center gap-x-2">
+     <div class="flex items-center justify-between gap-x-2 p-4">
          <a href="{{ route('officers.index') }}"
-             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+             class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 focus:bg-gray-700 active:bg-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
              عرض
          </a>
 
          <a href="{{ route('officers.create') }}"
-             class="inline-flex items-center px-4 py-2 bg-violet-500 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-violet-700 focus:bg-violet-700 active:bg-violet-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
+             class="inline-flex items-center px-4 py-2 bg-violet-500 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-blue-700 focus:bg-blue-700 active:bg-blue-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition ease-in-out duration-150">
              إضافة
          </a>
      </div>

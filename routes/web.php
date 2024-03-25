@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OfficerController;
 use App\Http\Controllers\UserController;
@@ -18,4 +19,6 @@ Route::middleware([
 
     Route::resource('users', UserController::class)
         ->only(['index', 'create', 'edit']);
+
+    Route::resource('enquiries', EnquiryController::class)->only(['index', 'create']);
 });

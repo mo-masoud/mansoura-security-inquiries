@@ -16,10 +16,14 @@
 
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-4 mt-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 mt-4">
                         <x-users-count :users="$users" />
 
                         <x-officers-count :officers="$officers" />
+
+                        <x-total-enq-count :number="$enquiries" />
+
+                        <x-today-enq-count :number="$todayEnquiries" />
                     </div>
                 </div>
             </div>
