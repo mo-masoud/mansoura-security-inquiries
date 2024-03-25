@@ -53,6 +53,9 @@ class Create extends Component
             'license_date' => 'required|date',
         ]);
 
+        $owner_image_path = $this->owner_image->store('public/images');
+        $driver_image_path = $this->driver_image->store('public/images');
+
         Enquiry::create([
             'code' => $this->code,
             'car_no' => $this->car_no,
@@ -62,11 +65,11 @@ class Create extends Component
             'owner_address' => $this->owner_address,
             'owner_national_id' => $this->owner_national_id,
             'owner_phone_no' => $this->owner_phone_no,
-            'owner_image' => $this->owner_image,
+            'owner_image' => $owner_image_path,
             'driver_name' => $this->driver_name,
             'driver_address' => $this->driver_address,
             'driver_national_id' => $this->driver_national_id,
-            'driver_image' => $this->driver_image,
+            'driver_image' => $driver_image_path,
             'car_type' => $this->car_type,
             'car_brand' => $this->car_brand,
             'car_model' => $this->car_model,
@@ -78,7 +81,7 @@ class Create extends Component
         session()->flash('flash.bannerStyle', 'success');
         session()->flash('flash.banner', 'تم إضافة الإستعلام رقم (' . $this->code . ') بنجاح');
 
-        return redirect()->route('home');
+        return redirect()->route('dashboard');
     }
 
     public function render()

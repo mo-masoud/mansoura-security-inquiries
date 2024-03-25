@@ -25,6 +25,10 @@
 
                         <x-today-enq-count :number="$todayEnquiries" />
                     </div>
+
+                    <div class="mt-8">
+                        <livewire:enquiries.search />
+                    </div>
                 </div>
             </div>
         </div>
