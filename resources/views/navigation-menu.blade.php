@@ -16,13 +16,15 @@
                         الرئيسية
                     </x-nav-link>
 
-                    <x-nav-link href="{{ route('officers.index') }}" :active="request()->routeIs('officers.index')">
-                        الظباط
-                    </x-nav-link>
+                    @if (auth()->user()->type === 'admin')
+                        <x-nav-link href="{{ route('officers.index') }}" :active="request()->routeIs('officers.index')">
+                            الظباط
+                        </x-nav-link>
 
-                    <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
-                        الموظفين
-                    </x-nav-link>
+                        <x-nav-link href="{{ route('users.index') }}" :active="request()->routeIs('users.index')">
+                            الموظفين
+                        </x-nav-link>
+                    @endif
                 </div>
             </div>
 

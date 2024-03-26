@@ -17,18 +17,27 @@
                 <div class="p-6 sm:px-20 bg-white border-b border-gray-200">
 
                     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2 gap-8 mt-4">
-                        <x-users-count :users="$users" />
+                        @if (auth()->user()->type === 'admin')
+                            <x-users-count :users="$users" />
 
-                        <x-officers-count :officers="$officers" />
+                            <x-officers-count :officers="$officers" />
+                        @endif
 
-                        <x-total-enq-count :number="$enquiries" />
 
-                        <x-today-enq-count :number="$todayEnquiries" />
+                        @if (auth()->user()->type === 'employee')
+                            <x-total-enq-count :number="$enquiries" />
+
+                            <x-today-enq-count :number="$todayEnquiries" />
+                        @endif
+
                     </div>
 
-                    <div class="mt-8">
-                        <livewire:enquiries.search />
-                    </div>
+                    @if (auth()->user()->type === 'officer')
+                        <div class="mt-8">
+                            <livewire:enquiries.search />
+                        </div>
+                    @endif
+
                 </div>
             </div>
         </div>

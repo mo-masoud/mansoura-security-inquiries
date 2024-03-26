@@ -11,7 +11,7 @@ class HomeController extends Controller
     {
 
         $officers = User::where('type', 'officer')->count();
-        $users = User::where('type', 'user')->count();
+        $users = User::where('type', 'employee')->count();
 
         $enquiries = Enquiry::query();
 

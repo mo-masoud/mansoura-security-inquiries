@@ -43,13 +43,6 @@
                     </div>
 
                     <div>
-                        <x-label value="الكود" />
-                        <span class="mt-1 block w-full border rounded-md shadow-sm p-2 bg-gray-100 text-lg">
-                            {{ $enquiry->code }}
-                        </span>
-                    </div>
-
-                    <div>
                         <x-label value="رقم السيارة" />
                         <span class="mt-1 block w-full border rounded-md shadow-sm p-2 bg-gray-100 text-lg">
                             {{ $enquiry->car_no }}
@@ -161,6 +154,13 @@
 
                         <span class="mt-1 block w-full border rounded-md shadow-sm p-2 bg-gray-100 text-lg">
                             {{ $enquiry->license_date }}
+                        </span>
+                    </div>
+
+                    <div>
+                        <x-label value="تاريخ صرف الكود" />
+                        <span class="mt-1 block w-full border rounded-md shadow-sm p-2 bg-gray-100 text-lg">
+                            {{ $enquiry->created_at }}
                         </span>
                     </div>
 
