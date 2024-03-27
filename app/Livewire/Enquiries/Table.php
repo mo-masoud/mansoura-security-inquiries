@@ -15,6 +15,7 @@ class Table extends Component
             ['name' => 'رقم السيارة', 'field' => 'car_no'],
             ['name' => 'رقم الشاسية', 'field' => 'chassis_no'],
             ['name' => 'تاريخ الإنشاء', 'field' => 'created_at'],
+            ['name' => 'طباعة', 'field' => 'actions', 'actions' => ['print']],
         ];
 
         if (auth()->user()->type === 'employee') {

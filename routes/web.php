@@ -21,4 +21,6 @@ Route::middleware([
         ->only(['index', 'create', 'edit']);
 
     Route::resource('enquiries', EnquiryController::class)->only(['index', 'create']);
+    Route::get('enquiries/print/{enquiry}', [EnquiryController::class, 'print'])->name('enquiries.print');
+    Route::get('enquiries/print/preparing/{enquiry}', [EnquiryController::class, 'preparing'])->name('enquiries.print-preparing');
 });

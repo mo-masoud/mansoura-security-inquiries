@@ -56,7 +56,7 @@ class Create extends Component
         $owner_image_path = $this->owner_image->store('public/images');
         $driver_image_path = $this->driver_image->store('public/images');
 
-        Enquiry::create([
+        $enquiry = Enquiry::create([
             'code' => $this->code,
             'car_no' => $this->car_no,
             'chassis_no' => $this->chassis_no,
@@ -81,7 +81,8 @@ class Create extends Component
         session()->flash('flash.bannerStyle', 'success');
         session()->flash('flash.banner', 'تم إضافة الإستعلام رقم (' . $this->code . ') بنجاح');
 
-        return redirect()->route('dashboard');
+        return redirect()->route('enquiries.print-preparing', $enquiry->id);
+        // return redirect()->route('dashboard');
     }
 
     public function render()
