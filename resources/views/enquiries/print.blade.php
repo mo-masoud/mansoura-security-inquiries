@@ -144,7 +144,7 @@
                 <x-label for="line" value="خط السير" />
 
                 <span class="mt-1 block w-full border rounded-md p-0.5 bg-gray-100 text-lg">
-                    {{ $enquiry->line }}
+                    {{ $enquiry->line ?? '-' }}
                 </span>
             </div>
 

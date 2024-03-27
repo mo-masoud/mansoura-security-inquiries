@@ -30,6 +30,8 @@ class Create extends Component
     public $line;
     public $license_date;
 
+    public $showLine = false;
+
     public function create()
     {
         $this->validate([
@@ -49,7 +51,7 @@ class Create extends Component
             'car_type' => 'required|string|max:255',
             'car_brand' => 'required|string|max:255',
             'car_model' => 'required|string|max:255',
-            'line' => 'required|string|max:255',
+            'line' => 'required_if:car_type,ميكروباص,تاكسي,توكتوك|nullable|string|max:255',
             'license_date' => 'required|date',
         ]);
 

@@ -87,9 +87,10 @@
                  <x-label for="car_type" value="نوع السيارة" />
                  <select name="car_type" id="car_type" wire:model="car_type"
                      class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
-                     <option value="بيجو">بيجو</option>
+                     <option value="ملاكي">ملاكي</option>
                      <option value="نقل">نقل</option>
                      <option value="ميكروباص">ميكروباص</option>
+                     <option value="دراجة نارية">دراجة نارية</option>
                      <option value="تاكسي">تاكسي</option>
                      <option value="توكتوك">توكتوك</option>
                      <option value="رحلات">رحلات</option>
