@@ -28,19 +28,24 @@
             @if ($enquiry)
                 <div class="grid grid-cols-2 gap-4">
 
-                    <div>
-                        <x-label value="صورة مالك السيارة" />
-                        <span class="mt-1 block w-full border rounded-md shadow-sm">
-                            <img src="{{ Storage::url($enquiry->owner_image) }}" class="object-contain w-full h-80">
-                        </span>
-                    </div>
+                    @if ($enquiry->owner_image)
+                        <div>
+                            <x-label value="صورة مالك السيارة" />
+                            <span class="mt-1 block w-full border rounded-md shadow-sm">
+                                <img src="{{ Storage::url($enquiry->owner_image) }}" class="object-contain w-full h-80">
+                            </span>
+                        </div>
+                    @endif
 
-                    <div>
-                        <x-label value="صورة سائق السيارة" />
-                        <span class="mt-1 block w-full border rounded-md shadow-sm">
-                            <img src="{{ Storage::url($enquiry->driver_image) }}" class="object-contain w-full h-80">
-                        </span>
-                    </div>
+                    @if ($enquiry->driver_image)
+                        <div>
+                            <x-label value="صورة سائق السيارة" />
+                            <span class="mt-1 block w-full border rounded-md shadow-sm">
+                                <img src="{{ Storage::url($enquiry->driver_image) }}"
+                                    class="object-contain w-full h-80">
+                            </span>
+                        </div>
+                    @endif
 
                     <div>
                         <x-label value="رقم السيارة" />

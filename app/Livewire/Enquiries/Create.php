@@ -41,11 +41,11 @@ class Create extends Component
             'owner_address' => 'required|string|max:255',
             'owner_national_id' => 'required|string|size:14',
             'owner_phone_no' => 'required|string|min:11|max:11',
-            'owner_image' => 'required|image|max:1024',
+            'owner_image' => 'nullable|image|max:2048',
             'driver_name' => 'required|string|max:255',
             'driver_address' => 'required|string|max:255',
             'driver_national_id' => 'required|string|size:14',
-            'driver_image' => 'required|image|max:1024',
+            'driver_image' => 'nullable|image|max:2048',
             'car_type' => 'required|string|max:255',
             'car_brand' => 'required|string|max:255',
             'car_model' => 'required|string|max:255',
@@ -53,8 +53,17 @@ class Create extends Component
             'license_date' => 'required|date',
         ]);
 
-        $owner_image_path = $this->owner_image->store('public/images');
-        $driver_image_path = $this->driver_image->store('public/images');
+        if ($this->owner_image != null) {
+            $owner_image_path = $this->owner_image->store('public/images');
+        } else {
+            $owner_image_path = null;
+        }
+
+        if ($this->driver_image != null) {
+            $driver_image_path = $this->driver_image->store('public/images');
+        } else {
+            $driver_image_path = null;
+        }
 
         $enquiry = Enquiry::create([
             'code' => $this->code,
