@@ -12,7 +12,7 @@
             window.open('{{ $url }}', '_blank');
 
             // Redirect the user to the dashboard after 1 second
-            window.location.href = "/";
+            // window.location.href = "/";
 
         }
     </script>
