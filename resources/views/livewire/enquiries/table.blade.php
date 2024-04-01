@@ -74,5 +74,29 @@
                 {{ $enquiries->links() }}
             </div>
         </div>
+
+        <x-dialog-modal wire:model.live="confirmingDeletion">
+            <x-slot name="title">
+                حذف الإستعلام
+            </x-slot>
+
+            <x-slot name="content">
+                <div class="py-8 text-gray-700">
+                    هل أنت متأكد من حذف الإستعلام؟
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-secondary-button wire:click="$toggle('confirmingDeletion')" wire:loading.attr="disabled">
+                    إلغاء
+                </x-secondary-button>
+
+                <x-danger-button class="ms-3" wire:click="delete" wire:loading.attr="disabled">
+                    حذف
+                </x-danger-button>
+            </x-slot>
+        </x-dialog-modal>
     @endif
+
+
 </div>

@@ -24,6 +24,8 @@
             <button wire:click="search" class="px-4 py-2 bg-teal-500 text-white rounded-md mr-4">بحث</button>
         </div>
 
+        <x-input-error for="code" />
+
         <div class="mt-4 border-t pt-4">
             @if ($enquiry)
                 <div class="grid grid-cols-2 gap-4">

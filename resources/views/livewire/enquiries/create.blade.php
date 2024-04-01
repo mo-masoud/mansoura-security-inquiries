@@ -1,14 +1,7 @@
- <form wire:submit="create" id="enqForm">
+ <form wire:submit.prevent="create(Object.fromEntries(new FormData($event.target)))" id="enqForm">
      <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
-         <div class="w-1/2 mb-4">
-             <div class="col-span-6 sm:col-span-4">
-                 <x-label for="code" value="الكود" />
-                 <x-input id="code" type="number" class="mt-1 block w-full" wire:model="code" />
-                 <x-input-error for="code" class="mt-2" />
-             </div>
-         </div>
 
-         <div class="grid grid-cols-2 gap-6 border-t pt-4">
+         <div class="grid grid-cols-2 gap-6">
              <div>
                  <x-label for="car_no" value="رقم السيارة" />
                  <x-input id="car_no" type="text" class="mt-1 block w-full" wire:model="car_no" />
@@ -54,7 +47,18 @@
 
              <div>
                  <x-label for="owner_image" value="صورة المالك" />
-                 <x-input id="owner_image" type="file" class="mt-1 block w-full" wire:model="owner_image" />
+                 <div class="flex items-center gap-x-2 mt-1 w-full">
+                     <x-button type="button" id="start-owner-camera">افتح الكاميرا</x-button>
+                     <x-button type="button" id="owner-capture" class="hidden">اخذ صورة</x-button>
+                 </div>
+                 <div id="onwer-image-display" class="mt-2">
+                     @if ($owner_image)
+                         <img src="{{ $owner_image }}" width="320" height="240" />
+                     @endif
+                 </div>
+                 <video id="owner-video" width="320" height="240" autoplay hidden></video>
+                 <canvas id="owner-canvas" width="320" height="240" hidden></canvas>
+                 <x-input id="owner_image" type="hidden" name="owner_image" value="{{ $owner_image }}" />
                  <x-input-error for="owner_image" class="mt-2" />
              </div>
 
@@ -79,7 +83,18 @@
 
              <div>
                  <x-label for="driver_image" value="صورة السائق" />
-                 <x-input id="driver_image" type="file" class="mt-1 block w-full" wire:model="driver_image" />
+                 <div class="flex items-center gap-x-2 mt-1 w-full">
+                     <x-button type="button" id="start-driver-camera">افتح الكاميرا</x-button>
+                     <x-button type="button" id="driver-capture" class="hidden">اخذ صورة</x-button>
+                 </div>
+                 <div id="driver-image-display" class="mt-2">
+                     @if ($driver_image)
+                         <img src="{{ $driver_image }}" width="320" height="240" />
+                     @endif
+                 </div>
+                 <video id="driver-video" width="320" height="240" autoplay hidden></video>
+                 <canvas id="driver-canvas" width="320" height="240" hidden></canvas>
+                 <x-input id="driver_image" type="hidden" name="driver_image" value="{{ $driver_image }}" />
                  <x-input-error for="driver_image" class="mt-2" />
              </div>
 
@@ -138,3 +153,106 @@
          </x-button>
      </div>
  </form>
+
+
+ <script>
+     let onwerVideoStream = null;
+     document.getElementById('start-owner-camera').addEventListener('click', async () => {
+
+         const ownerCaptureButton = document.getElementById('owner-capture');
+         ownerCaptureButton.classList.remove('hidden');
+
+         const display = document.getElementById('onwer-image-display');
+         display.innerHTML = '';
+
+         const video = document.getElementById('owner-video');
+         try {
+             onwerVideoStream = await navigator.mediaDevices.getUserMedia({
+                 video: true
+             });
+             video.srcObject = onwerVideoStream;
+             video.style.display = 'block'; // Show the video element
+         } catch (error) {
+             console.error('Error accessing the camera', error);
+         }
+     });
+
+     document.getElementById('owner-capture').addEventListener('click', () => {
+         const canvas = document.getElementById('owner-canvas');
+         const video = document.getElementById('owner-video');
+         const context = canvas.getContext('2d');
+         context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+         const imageDataURL = canvas.toDataURL('image/jpeg');
+
+         document.getElementById('owner_image').value = imageDataURL;
+
+         video.style.display = 'none';
+
+         if (onwerVideoStream) {
+             onwerVideoStream.getTracks().forEach(track => track.stop());
+         }
+
+         const img = document.createElement('img');
+         img.src = imageDataURL;
+         img.width = 320;
+         img.height = 240;
+
+         const display = document.getElementById('onwer-image-display');
+         display.innerHTML = '';
+         display.appendChild(img);
+
+         const ownerCaptureButton = document.getElementById('owner-capture');
+         ownerCaptureButton.classList.add('hidden');
+     });
+
+     let driverVideoStream = null;
+     document.getElementById('start-driver-camera').addEventListener('click', async () => {
+
+         const driverCaptureButton = document.getElementById('driver-capture');
+         driverCaptureButton.classList.remove('hidden');
+
+         const display = document.getElementById('driver-image-display');
+         display.innerHTML = '';
+
+         const video = document.getElementById('driver-video');
+         try {
+             driverVideoStream = await navigator.mediaDevices.getUserMedia({
+                 video: true
+             });
+             video.srcObject = driverVideoStream;
+             video.style.display = 'block'; // Show the video element
+         } catch (error) {
+             console.error('Error accessing the camera', error);
+         }
+     });
+
+     document.getElementById('driver-capture').addEventListener('click', () => {
+         const canvas = document.getElementById('driver-canvas');
+         const video = document.getElementById('driver-video');
+         const context = canvas.getContext('2d');
+         context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+         const imageDataURL = canvas.toDataURL('image/jpeg');
+
+         document.getElementById('driver_image').value = imageDataURL;
+
+         video.style.display = 'none';
+
+         if (driverVideoStream) {
+             driverVideoStream.getTracks().forEach(track => track.stop());
+         }
+
+         const img = document.createElement('img');
+         img.src = imageDataURL;
+         img.width = 320;
+         img.height = 240;
+
+         const display = document.getElementById('driver-image-display');
+         display.innerHTML = '';
+         display.appendChild(img);
+
+         const driverCaptureButton = document.getElementById('driver-capture');
+         driverCaptureButton.classList.add('hidden');
+     });
+ </script>

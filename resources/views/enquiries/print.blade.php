@@ -20,7 +20,7 @@
 <body class="font-sans antialiased" onload="window.print()">
 
     <div class="min-h-screen container mx-auto px-20 py-12">
-        <h1 class="text-center text-2xl font-bold">الاستمارة رقم: {{ $enquiry->code }}</h1>
+        <h1 class="text-center text-2xl font-bold">الاستمارة رقم: {{ $enquiry->id }}</h1>
         <div class="grid grid-cols-2 gap-4 mt-8">
 
             @if ($enquiry->owner_image)

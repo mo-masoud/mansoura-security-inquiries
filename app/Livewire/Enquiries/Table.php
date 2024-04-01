@@ -7,15 +7,36 @@ use Livewire\Component;
 
 class Table extends Component
 {
+    public $confirmingDeletion = false;
+    public $deletedId = null;
+
+    public function confirmDeletion($id)
+    {
+        $this->confirmingDeletion = true;
+        $this->deletedId = $id;
+    }
+
+    public function delete()
+    {
+        Enquiry::find($this->deletedId)->delete();
+        $this->confirmingDeletion = false;
+        $this->deletedId = null;
+
+        session()->flash('flash.bannerStyle', 'success');
+        session()->flash('flash.banner', 'تم حذف الإستعلام بنجاح');
+
+        return redirect()->route('enquiries.index');
+    }
+
     public function render()
     {
         $columns = [
-            ['name' => 'الكود', 'field' => 'code'],
+            ['name' => 'الكود', 'field' => 'id'],
             ['name' => 'النوع', 'field' => 'car_type'],
             ['name' => 'رقم السيارة', 'field' => 'car_no'],
             ['name' => 'رقم الشاسية', 'field' => 'chassis_no'],
             ['name' => 'تاريخ الإنشاء', 'field' => 'created_at'],
-            ['name' => 'طباعة', 'field' => 'actions', 'actions' => ['print']],
+            ['name' => 'التحكم', 'field' => 'actions', 'actions' => ['print', 'delete']],
         ];
 
         if (auth()->user()->type === 'employee') {

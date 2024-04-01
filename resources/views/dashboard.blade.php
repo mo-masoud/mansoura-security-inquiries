@@ -24,7 +24,7 @@
                         @endif
 
 
-                        @if (auth()->user()->type === 'employee')
+                        @if (auth()->user()->type === 'employee' || auth()->user()->type === 'admin')
                             <x-total-enq-count :number="$enquiries" />
 
                             <x-today-enq-count :number="$todayEnquiries" />
@@ -32,7 +32,7 @@
 
                     </div>
 
-                    @if (auth()->user()->type === 'officer')
+                    @if (auth()->user()->type === 'officer' || auth()->user()->type === 'admin')
                         <div class="mt-8">
                             <livewire:enquiries.search />
                         </div>
