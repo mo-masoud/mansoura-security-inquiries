@@ -17,11 +17,6 @@
             window.open('{{ $url }}', '_blank');
 
             // Redirect the user to the dashboard after 1 second
-
-            setTimeout(function() {
-                window.location.href = "/";
-            }, 5000);
-
         }
     </script>
 </body>
