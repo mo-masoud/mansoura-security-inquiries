@@ -112,6 +112,7 @@
                  <select name="car_type" id="car_type" wire:model="car_type"
                      class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
                      <option value="ملاكي">ملاكي</option>
+                     <option value="اجرة">اجرة</option>
                      <option value="نقل">نقل</option>
                      <option value="ميكروباص">ميكروباص</option>
                      <option value="دراجة نارية">دراجة نارية</option>
