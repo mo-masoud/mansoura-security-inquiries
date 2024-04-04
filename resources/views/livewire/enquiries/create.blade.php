@@ -1,7 +1,15 @@
  <form wire:submit.prevent="create(Object.fromEntries(new FormData($event.target)))" id="enqForm">
      <div class="px-4 py-5 bg-white sm:p-6 shadow sm:rounded-tl-md sm:rounded-tr-md">
 
-         <div class="grid grid-cols-2 gap-6">
+         <div class="w-1/2 mb-4">
+             <div class="col-span-6 sm:col-span-4">
+                 <x-label for="code" value="الكود" />
+                 <x-input id="code" type="number" class="mt-1 block w-full" wire:model="code" />
+                 <x-input-error for="code" class="mt-2" />
+             </div>
+         </div>
+
+         <div class="grid grid-cols-2 gap-6 mt-4 pt-4 border-t">
              <div>
                  <x-label for="car_no" value="رقم السيارة" />
                  <x-input id="car_no" type="text" class="mt-1 block w-full" wire:model="car_no" />
@@ -70,7 +78,8 @@
 
              <div>
                  <x-label for="driver_address" value="عنوان السائق" />
-                 <x-input id="driver_address" type="text" class="mt-1 block w-full" wire:model="driver_address" />
+                 <x-input id="driver_address" type="text" class="mt-1 block w-full"
+                     wire:model="driver_address" />
                  <x-input-error for="driver_address" class="mt-2" />
              </div>
 
@@ -140,7 +149,8 @@
 
              <div>
                  <x-label for="license_date" value="تاريخ انتهاء الرخصة" />
-                 <x-input id="license_date" type="date" class="mt-1 block w-full" wire:model="license_date" />
+                 <x-input id="license_date" type="date" class="mt-1 block w-full" wire:model="license_date"
+                     dir="ltr" />
                  <x-input-error for="license_date" class="mt-2" />
              </div>
          </div>

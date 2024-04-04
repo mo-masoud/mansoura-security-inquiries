@@ -12,6 +12,7 @@ class Create extends Component
 
     use WithFileUploads;
 
+    public $code;
     public $car_no;
     public $chassis_no;
     public $engine_no;
@@ -38,6 +39,7 @@ class Create extends Component
         $this->driver_image = $data['driver_image'] ?? null;
 
         $this->validate([
+            'code' => 'required|string|max:255|unique:enquiries,code',
             'car_no' => 'required|string|max:255',
             'chassis_no' => 'required|string|max:255',
             'engine_no' => 'required|string|max:255',
@@ -88,6 +90,7 @@ class Create extends Component
         }
 
         $enquiry = Enquiry::create([
+            'code' => $this->code,
             'car_no' => $this->car_no,
             'chassis_no' => $this->chassis_no,
             'engine_no' => $this->engine_no,

@@ -20,7 +20,7 @@
 <body class="font-sans antialiased" onload="window.print()">
 
     <div class="min-h-screen container mx-auto px-20 py-12">
-        <h1 class="text-center text-2xl font-bold">الاستمارة رقم: {{ $enquiry->id }}</h1>
+        <h1 class="text-center text-2xl font-bold">كود رقم: {{ $enquiry->code }}</h1>
         <div class="grid grid-cols-2 gap-4 mt-8">
 
             @if ($enquiry->owner_image)
@@ -30,6 +30,12 @@
                         <img src="{{ Storage::url($enquiry->owner_image) }}" class="object-contain w-full h-40">
                     </span>
                 </div>
+            @else
+                <div>
+                    <x-label value="صورة مالك السيارة" />
+                    <span class="mt-1 block w-full rounded-md h-40">
+                    </span>
+                </div>
             @endif
 
             @if ($enquiry->driver_image)
@@ -37,6 +43,12 @@
                     <x-label value="صورة سائق السيارة" />
                     <span class="mt-1 block w-full rounded-md">
                         <img src="{{ Storage::url($enquiry->driver_image) }}" class="object-contain w-full h-40">
+                    </span>
+                </div>
+            @else
+                <div>
+                    <x-label value="صورة سائق السيارة" />
+                    <span class="mt-1 block w-full rounded-md h-40">
                     </span>
                 </div>
             @endif

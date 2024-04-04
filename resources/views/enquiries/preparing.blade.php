@@ -17,7 +17,7 @@
 
             setTimeout(function() {
                 window.location.href = '/';
-            }, 5000);
+            }, 1000);
         }
         // Redirect to the portal after document is loaded
         document.addEventListener('DOMContentLoaded', function() {

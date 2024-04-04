@@ -31,12 +31,12 @@ class Table extends Component
     public function render()
     {
         $columns = [
-            ['name' => 'الكود', 'field' => 'id'],
+            ['name' => 'الكود', 'field' => 'code'],
             ['name' => 'النوع', 'field' => 'car_type'],
             ['name' => 'رقم السيارة', 'field' => 'car_no'],
             ['name' => 'رقم الشاسية', 'field' => 'chassis_no'],
             ['name' => 'تاريخ الإنشاء', 'field' => 'created_at'],
-            ['name' => 'التحكم', 'field' => 'actions', 'actions' => ['print', 'delete']],
+            ['name' => 'التحكم', 'field' => 'actions', 'actions' => ['print', 'delete', 'edit']],
         ];
 
         if (auth()->user()->type === 'employee') {

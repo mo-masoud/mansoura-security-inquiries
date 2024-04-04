@@ -13,12 +13,12 @@ class Search extends Component
     public function search()
     {
         $this->validate([
-            'code' => 'required|numeric|exists:enquiries,id',
+            'code' => 'required|numeric|exists:enquiries,code',
         ], [
             'code.exists' => 'الكود غير موجود',
         ]);
 
-        $this->enquiry = Enquiry::where('id', $this->code)
+        $this->enquiry = Enquiry::where('code', $this->code)
             ->first();
     }
 
