@@ -71,43 +71,6 @@
              </div>
 
              <div>
-                 <x-label for="driver_name" value="اسم السائق" />
-                 <x-input id="driver_name" type="text" class="mt-1 block w-full" wire:model="driver_name" />
-                 <x-input-error for="driver_name" class="mt-2" />
-             </div>
-
-             <div>
-                 <x-label for="driver_address" value="عنوان السائق" />
-                 <x-input id="driver_address" type="text" class="mt-1 block w-full"
-                     wire:model="driver_address" />
-                 <x-input-error for="driver_address" class="mt-2" />
-             </div>
-
-             <div>
-                 <x-label for="driver_national_id" value="رقم بطاقة السائق" />
-                 <x-input id="driver_national_id" type="text" class="mt-1 block w-full"
-                     wire:model="driver_national_id" />
-                 <x-input-error for="driver_national_id" class="mt-2" />
-             </div>
-
-             <div>
-                 <x-label for="driver_image" value="صورة السائق" />
-                 <div class="flex items-center gap-x-2 mt-1 w-full">
-                     <x-button type="button" id="start-driver-camera">افتح الكاميرا</x-button>
-                     <x-button type="button" id="driver-capture" class="hidden">اخذ صورة</x-button>
-                 </div>
-                 <div id="driver-image-display" class="mt-2">
-                     @if ($driver_image)
-                         <img src="{{ $driver_image }}" width="320" height="240" />
-                     @endif
-                 </div>
-                 <video id="driver-video" width="320" height="240" autoplay hidden></video>
-                 <canvas id="driver-canvas" width="320" height="240" hidden></canvas>
-                 <x-input id="driver_image" type="hidden" name="driver_image" value="{{ $driver_image }}" />
-                 <x-input-error for="driver_image" class="mt-2" />
-             </div>
-
-             <div>
                  <x-label for="car_type" value="نوع السيارة" />
                  <select name="car_type" id="car_type" wire:model="car_type"
                      class="mt-1 block w-full border-gray-300 focus:border-indigo-500 focus:ring-indigo-500 rounded-md shadow-sm">
@@ -148,12 +111,6 @@
                  <x-input-error for="center" class="mt-2" />
              </div>
 
-             <div>
-                 <x-label for="license_date" value="تاريخ انتهاء الرخصة" />
-                 <x-input id="license_date" type="date" class="mt-1 block w-full" wire:model="license_date"
-                     dir="ltr" />
-                 <x-input-error for="license_date" class="mt-2" />
-             </div>
          </div>
      </div>
 
@@ -215,55 +172,5 @@
 
          const ownerCaptureButton = document.getElementById('owner-capture');
          ownerCaptureButton.classList.add('hidden');
-     });
-
-     let driverVideoStream = null;
-     document.getElementById('start-driver-camera').addEventListener('click', async () => {
-
-         const driverCaptureButton = document.getElementById('driver-capture');
-         driverCaptureButton.classList.remove('hidden');
-
-         const display = document.getElementById('driver-image-display');
-         display.innerHTML = '';
-
-         const video = document.getElementById('driver-video');
-         try {
-             driverVideoStream = await navigator.mediaDevices.getUserMedia({
-                 video: true
-             });
-             video.srcObject = driverVideoStream;
-             video.style.display = 'block'; // Show the video element
-         } catch (error) {
-             console.error('Error accessing the camera', error);
-         }
-     });
-
-     document.getElementById('driver-capture').addEventListener('click', () => {
-         const canvas = document.getElementById('driver-canvas');
-         const video = document.getElementById('driver-video');
-         const context = canvas.getContext('2d');
-         context.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-         const imageDataURL = canvas.toDataURL('image/jpeg');
-
-         document.getElementById('driver_image').value = imageDataURL;
-
-         video.style.display = 'none';
-
-         if (driverVideoStream) {
-             driverVideoStream.getTracks().forEach(track => track.stop());
-         }
-
-         const img = document.createElement('img');
-         img.src = imageDataURL;
-         img.width = 320;
-         img.height = 240;
-
-         const display = document.getElementById('driver-image-display');
-         display.innerHTML = '';
-         display.appendChild(img);
-
-         const driverCaptureButton = document.getElementById('driver-capture');
-         driverCaptureButton.classList.add('hidden');
      });
  </script>
