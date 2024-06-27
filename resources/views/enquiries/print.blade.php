@@ -75,14 +75,6 @@
             </div>
 
             <div>
-                <x-label for="owner_national_id" value="رقم بطاقة المالك" />
-
-                <span class="mt-1 block w-full border rounded-md p-0.5 bg-gray-100 text-lg">
-                    {{ $enquiry->owner_national_id }}
-                </span>
-            </div>
-
-            <div>
                 <x-label for="owner_phone_no" value="رقم المالك" />
 
                 <span class="mt-1 block w-full border rounded-md p-0.5 bg-gray-100 text-lg">
@@ -103,14 +95,6 @@
 
                 <span class="mt-1 block w-full border rounded-md p-0.5 bg-gray-100 text-lg">
                     {{ $enquiry->car_brand }}
-                </span>
-            </div>
-
-            <div>
-                <x-label for="car_model" value="الموديل" />
-
-                <span class="mt-1 block w-full border rounded-md p-0.5 bg-gray-100 text-lg">
-                    {{ $enquiry->car_model }}
                 </span>
             </div>
 

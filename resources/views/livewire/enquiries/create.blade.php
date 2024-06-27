@@ -41,13 +41,6 @@
              </div>
 
              <div>
-                 <x-label for="owner_national_id" value="رقم بطاقة المالك" />
-                 <x-input id="owner_national_id" type="text" class="mt-1 block w-full"
-                     wire:model="owner_national_id" />
-                 <x-input-error for="owner_national_id" class="mt-2" />
-             </div>
-
-             <div>
                  <x-label for="owner_phone_no" value="رقم المالك" />
                  <x-input id="owner_phone_no" type="text" class="mt-1 block w-full" wire:model="owner_phone_no" />
                  <x-input-error for="owner_phone_no" class="mt-2" />
@@ -90,12 +83,6 @@
                  <x-label for="car_brand" value="الماركة" />
                  <x-input id="car_brand" type="text" class="mt-1 block w-full" wire:model="car_brand" />
                  <x-input-error for="car_brand" class="mt-2" />
-             </div>
-
-             <div>
-                 <x-label for="car_model" value="الموديل" />
-                 <x-input id="car_model" type="text" class="mt-1 block w-full" wire:model="car_model" />
-                 <x-input-error for="car_model" class="mt-2" />
              </div>
 
              <div>
