@@ -15,18 +15,18 @@ class HomeController extends Controller
 
         $enquiries = Enquiry::query();
 
-        if (auth()->user()->type == 'employee') {
-            $enquiries->where('user_id', auth()->id());
-        }
+        // if (auth()->user()->type == 'employee') {
+        //     $enquiries->where('user_id', auth()->id());
+        // }
 
         $enquiries = $enquiries->count();
 
 
         $todayEnquiries = Enquiry::query();
 
-        if (auth()->user()->type == 'employee') {
-            $todayEnquiries->where('user_id', auth()->id());
-        }
+        // if (auth()->user()->type == 'employee') {
+        //     $todayEnquiries->where('user_id', auth()->id());
+        // }
 
         $todayEnquiries = $todayEnquiries
             ->whereDate('created_at', now()->today())

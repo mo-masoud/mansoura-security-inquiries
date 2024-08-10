@@ -24,19 +24,19 @@
                         @endif
 
 
-                        @if (auth()->user()->type === 'employee' || auth()->user()->type === 'admin')
-                            <x-total-enq-count :number="$enquiries" />
+                        {{-- @if (auth()->user()->type === 'employee' || auth()->user()->type === 'admin') --}}
+                        <x-total-enq-count :number="$enquiries" />
 
-                            <x-today-enq-count :number="$todayEnquiries" />
-                        @endif
+                        <x-today-enq-count :number="$todayEnquiries" />
+                        {{-- @endif --}}
 
                     </div>
 
-                    @if (auth()->user()->type === 'officer' || auth()->user()->type === 'admin')
-                        <div class="mt-8">
-                            <livewire:enquiries.search />
-                        </div>
-                    @endif
+                    {{-- @if (auth()->user()->type === 'officer' || auth()->user()->type === 'admin') --}}
+                    <div class="mt-8">
+                        <livewire:enquiries.search />
+                    </div>
+                    {{-- @endif --}}
 
                 </div>
             </div>

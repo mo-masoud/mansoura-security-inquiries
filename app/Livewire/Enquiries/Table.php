@@ -40,10 +40,12 @@ class Table extends Component
         ];
 
         if (auth()->user()->type === 'employee') {
-            $enquiries = Enquiry::where('user_id', auth()->id())
-                ->when(request('today') == 1, function ($query) {
-                    return $query->whereDate('created_at', today());
-                })
+            $enquiries = Enquiry::
+            /**where('user_id', auth()->id())
+                ->*/
+            when(request('today') == 1, function ($query) {
+                return $query->whereDate('created_at', today());
+            })
                 ->latest()
                 ->paginate();
         } else {
